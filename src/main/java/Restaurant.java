@@ -17,9 +17,9 @@ public class Restaurant {
         this.closingTime = closingTime;
     }
 
-    public boolean isRestaurantOpen() {
-        LocalTime gettingCurrentTime = getCurrentTime();
-        return gettingCurrentTime.isBefore(closingTime) && gettingCurrentTime.isAfter(openingTime);
+    public boolean isRestaurantOpen(LocalTime currentTiming) {
+       // LocalTime gettingCurrentTime = getCurrentTime();
+        return currentTiming.isBefore(closingTime) && currentTiming.isAfter(openingTime);
 
 
     }
@@ -64,14 +64,7 @@ public class Restaurant {
 
     }
 
-    public int CalculateValue(String... itemNames) {
-        int total = 0;
-        for (String itemName : itemNames) {
-            Item item = findItemByName(itemName);
-            total += item.getPrice();
-        }
-        return total;
-    }
+
     public String getName() {
         return name;
     }
