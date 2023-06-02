@@ -2,6 +2,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,6 +64,12 @@ class RestaurantTest {
 
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
+    }
+    @Test
+    public void calculate_total_should_return_correct_total_price_for_selected_items() throws itemNotFoundException {
+        List<String> selectedItems = Arrays.asList("Sweet corn soup","Vegetable lasagne");
+        int totalPrice = restaurant.calculateTotal((selectedItems));
+        assertEquals(388, totalPrice);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }

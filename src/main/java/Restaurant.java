@@ -63,6 +63,24 @@ public class Restaurant {
                 + "Menu:" + "\n" + getMenu());
 
     }
+    public int calculateTotal(List<String> selectedItems) throws itemNotFoundException {
+        int total = 0;
+        for (String itemName : selectedItems) {
+            Item item = findItemByName(itemName);
+            if (item == null)
+                throw new itemNotFoundException(itemName);
+            total += item.getPrice();
+        }
+        return total;
+    }
+    public int getOrderValue(String... itemNames) {
+        int total = 0;
+        for (String itemName : itemNames) {
+            Item item = findItemByName(itemName);
+            total += item.getPrice();
+        }
+        return total;
+    }
 
 
     public String getName() {
